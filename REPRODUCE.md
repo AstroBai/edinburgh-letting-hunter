@@ -6,14 +6,14 @@
 
 ## 项目目标
 
-每 30 分钟抓取 Edinburgh 多家租房中介网站 + SpareRoom + OpenRent 的房源，过滤出 EH9 2JG 周围 1.2 英里范围内 ≤2 卧室的出租房，新房源通过 Gmail 发送邮件通知。
+每 30 分钟抓取 Edinburgh 多家租房中介网站 + SpareRoom + OpenRent 的房源，过滤出目标位置周围指定范围内 ≤2 卧室的出租房，新房源通过 Gmail 发送邮件通知。
 
 ---
 
 ## 项目结构
 
 ```
-/Users/baijc/letting_agent/
+/path/to/letting_agent/
 ├── config.py              # 核心配置（坐标、范围、邮箱、来源列表）
 ├── scrape_all.py          # 主入口 — 调度所有爬虫 + 存储 + 通知
 ├── storage.py             # SQLite 数据库（去重）
@@ -70,18 +70,18 @@ playwright install chromium
 编辑 `config.py`：
 
 ```python
-# 中心点坐标（EH9 2JG）
-TARGET_POSTCODE = "EH9 2JG"
-TARGET_LAT = 55.934767
-TARGET_LON = -3.186329
+# 中心点坐标（替换为你的目标位置）
+TARGET_POSTCODE = "EH9 2XX"
+TARGET_LAT = 55.930000
+TARGET_LON = -3.190000
 RADIUS_MILES = 1.2
 MAX_BEDS = 2
 
 # Gmail 发件配置
-EMAIL_FROM = "astrobaijc@gmail.com"
-EMAIL_TO = "astrobaijc@gmail.com"
-EMAIL_USERNAME = "astrobaijc@gmail.com"
-EMAIL_APP_PASSWORD = "txbf praq cthr zevf"  # Gmail 应用专用密码
+EMAIL_FROM = "your-email@gmail.com"
+EMAIL_TO = "your-email@gmail.com"
+EMAIL_USERNAME = "your-email@gmail.com"
+EMAIL_APP_PASSWORD = "your-16-char-app-password"  # Gmail 应用专用密码
 ```
 
 Gmail 应用密码在 https://myaccount.google.com/apppasswords 生成（需开启两步验证）。
@@ -102,7 +102,7 @@ bash install_cron.sh
 查看日志：
 
 ```bash
-tail -f /Users/baijc/letting_agent/cron.log
+tail -f /path/to/letting_agent/cron.log
 ```
 
 ---
@@ -248,7 +248,7 @@ python3 -c "from scrapers.other_agents import MyNewScraper; s=MyNewScraper(); pr
 ### Q: 邮件发不出去？
 检查 `config.py` 中的 Gmail 应用密码是否正确，或设成环境变量：
 ```bash
-export LETTING_AGENT_EMAIL_USER="astrobaijc@gmail.com"
+export LETTING_AGENT_EMAIL_USER="your-email@gmail.com"
 export LETTING_AGENT_EMAIL_PASS="16位密码"
 ```
 

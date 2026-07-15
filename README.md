@@ -1,6 +1,6 @@
 # Edinburgh Letting Agent Scraper 🏠
 
-Scrapes property letting websites and SpareRoom for rental properties near **EH9 2HZ** (Morningside, Edinburgh), and emails new listings every 30 minutes.
+Scrapes property letting websites and SpareRoom for rental properties near **EH9 2XX** (Morningside, Edinburgh), and emails new listings every 30 minutes.
 
 ## Quick Start
 
@@ -10,7 +10,7 @@ Open `config.py` and set your Gmail App Password:
 
 ```python
 EMAIL_FROM = "your-email@gmail.com"
-EMAIL_TO = "astrobaijc@gmail.com"
+EMAIL_TO = "your-email@gmail.com"
 EMAIL_USERNAME = "your-email@gmail.com"
 EMAIL_APP_PASSWORD = "xxxx xxxx xxxx xxxx"  # 16-char Gmail App Password
 ```
@@ -30,7 +30,7 @@ export LETTING_AGENT_EMAIL_PASS="your-app-password"
 ### 2. Test the scraper
 
 ```bash
-cd /Users/baijc/letting_agent
+cd /path/to/letting_agent
 python3 scrape_all.py --dry-run
 ```
 
@@ -45,7 +45,7 @@ python3 setup_cron.py install
 Or install manually:
 ```bash
 crontab -l > /tmp/my_cron 2>/dev/null
-echo "*/30 * * * * cd /Users/baijc/letting_agent && /Users/baijc/miniconda3/bin/python3 /Users/baijc/letting_agent/scrape_all.py >> /Users/baijc/letting_agent/cron.log 2>&1" >> /tmp/my_cron
+echo "*/30 * * * * cd /path/to/letting_agent && /usr/bin/python3 scrape_all.py >> cron.log 2>&1" >> /tmp/my_cron
 crontab /tmp/my_cron
 rm /tmp/my_cron
 ```
@@ -64,7 +64,7 @@ playwright install chromium
 
 Every 30 minutes, the system:
 1. **Scrapes** property websites for rentals
-2. **Filters** to ≤2 beds within ~1 mile of EH9 2HZ
+2. **Filters** to ≤2 beds within ~1 mile of EH9 2XX
 3. **Compares** with previously seen listings (SQLite DB)
 4. **Emails** you only when new listings appear
 
@@ -81,7 +81,7 @@ Every 30 minutes, the system:
 ## Configuration
 
 Edit `config.py` to change:
-- `RADIUS_MILES` – search radius from EH9 2HZ (default: 1.0)
+- `RADIUS_MILES` – search radius from EH9 2XX (default: 1.0)
 - `MAX_BEDS` – max bedrooms (default: 2)
 - `SOURCES` – enable/disable specific scrapers
 - `EMAIL_*` – notification settings
