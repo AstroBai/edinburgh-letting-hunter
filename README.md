@@ -1,5 +1,16 @@
 # Edinburgh Letting Agent Scraper 🏠
 
+> **⚠️ Disclaimer**
+>
+> This code is provided for **personal learning and automated property search** purposes only. Users are expected to:
+> - Comply with each target website's Terms of Service
+> - Respect `robots.txt` rules
+> - Set reasonable request intervals to avoid overloading servers
+> - Accept all risks associated with using this code
+>
+> The author does not endorse or support any illegal or commercial use of this code.
+> If a website explicitly prohibits automated access, please stop scraping that site.
+
 Scrapes property letting websites and SpareRoom for rental properties near **EH9 2XX** (Morningside, Edinburgh), and emails new listings every 30 minutes.
 
 ## Quick Start
