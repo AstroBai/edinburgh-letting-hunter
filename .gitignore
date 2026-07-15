@@ -1,0 +1,32 @@
+# Database
+listings.db
+*.db
+
+# Logs
+cron.log
+*.log
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Environment
+.env
+.local.env
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Playwright browser downloads (user-specific cache)
+ms-playwright/
+
+# Project specific
+scraper_config_local.py
